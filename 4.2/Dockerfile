@@ -63,6 +63,7 @@ RUN mkdir /docker-entrypoint-initdb.d
 
 RUN set -ex; \
 	export GNUPGHOME="$(mktemp -d)"; \
+	echo "disable-ipv6" >> $GNUPGHOME/dirmngr.conf; \
 	set -- 'E162F504A20CDF15827F718D4B7C549A058F8B6B'; \
 	for key; do \
 		gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key"; \
