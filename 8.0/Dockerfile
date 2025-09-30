@@ -6,6 +6,10 @@
 
 FROM ubuntu:noble
 
+RUN set -x \
+  && apt-get update \
+  && apt-get upgrade -y -q --no-install-recommends
+
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN set -eux; \
 	groupadd --gid 999 --system mongodb; \
